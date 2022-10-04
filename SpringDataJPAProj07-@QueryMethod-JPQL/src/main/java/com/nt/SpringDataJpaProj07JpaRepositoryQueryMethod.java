@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringDataJpaProj07JpaRepository{
+public class SpringDataJpaProj07JpaRepositoryQueryMethod{
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringDataJpaProj07JpaRepository.class, args);
+		SpringApplication.run(SpringDataJpaProj07JpaRepositoryQueryMethod.class, args);
 		}
 }
