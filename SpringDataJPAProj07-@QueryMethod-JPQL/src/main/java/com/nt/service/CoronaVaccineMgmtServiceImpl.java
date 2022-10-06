@@ -1,13 +1,14 @@
 package com.nt.service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nt.entity.CoronaVaccine;
 import com.nt.repo.ICoronaVaccineRepo;
-import com.nt.type.View;
 
 @Service("vaccineMgmtService")
 public class CoronaVaccineMgmtServiceImpl implements ICoronaVaccineMgmtService {
@@ -29,5 +30,56 @@ public class CoronaVaccineMgmtServiceImpl implements ICoronaVaccineMgmtService {
 	@Override
 	public List<String> searchVaccinesNamesByPriceRange(double min, double max) {
 		return coronaRepo.searchVaccineByNamesByPriceRange(min, max);
+	}
+	@Override
+	public Optional<CoronaVaccine> searchVaccinesByName(String name) {
+		return coronaRepo.searchVaccinesByName(name);
+	}
+	@Override
+	public Object searchVaccineDataByName(String vname) {
+		return coronaRepo.searchVaccinesDataByName(vname);
+	}
+	@Override
+	public String searchVaccineCountryByName(String vname) {
+		return coronaRepo.searchVaccineCountryByName(vname);
+	}
+	@Override
+	public long getVaccinesCount() {
+		return coronaRepo.getVaccinesCount();
+	}
+	@Override
+	public Object getVaccinesAggregateDataByPriceRange(double min, double max) {
+		return coronaRepo.getVaccinesDataByPriceRange(min, max);
+	}
+	@Override
+	public int updateVaccinePriceByCountry(double newPrice, String country) {
+		return coronaRepo.updatePriceByCountry(newPrice, country);
+	}
+	@Override
+	public int removeVaccineByPriceRange(double startPrice, double endPrice) {
+		return coronaRepo.deleteVaccineByPriceRange(startPrice, endPrice);
+	}
+	
+	/*public int insertVaccine(Long RegNo, String Company, String Country, String Name, double Price,
+			int RequiredDoseCount) {
+		return coronaRepo.insertVaccine(RegNo, Company, Country, Name, Price, RequiredDoseCount);
+	}*/
+	@Override
+	public int insertVaccine(String Company, String Country, String Name, double Price,
+			int RequiredDoseCount) {
+		return coronaRepo.insertVaccine(Company, Country, Name, Price, RequiredDoseCount);
+	}
+	@Override
+	public Date SysDate() {
+		return coronaRepo.SysDate();
+	}
+	
+	@Override
+	public int CreateTempTable() {
+		return coronaRepo.createTable();
+	}
+	@Override
+	public int dropTable() {
+		return coronaRepo.DropTable();
 	}
 }
